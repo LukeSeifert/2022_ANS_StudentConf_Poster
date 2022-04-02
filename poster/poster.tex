@@ -86,7 +86,7 @@
         \raisebox{\dimexpr-\height+\baselineskip}[0pt][0pt]
           {\includegraphics[height=2.5\baselineskip]{UIUC_Logo}}% Left logo
       }\hfill
-      \makebox[0pt]{Title}%
+      \makebox[0pt]{Comparison Between Continuous and Batchwise}%
       \hfill\makebox[0pt][r]{%
         \raisebox{\dimexpr-\height+\baselineskip}[0pt][0pt]
           {\includegraphics[height=3.3\baselineskip]{arfc_atom}}% Right logo
@@ -94,12 +94,12 @@
     }%
   }
   % To make a title with two lines, remove the "%" from the following two lines 
-  %{First line of title}
-  %{Second line of title}
+  {Comparison Between Continuous and Batchwise}
+  {Online Reprocessing in Serpent2}
   {\vspace{1cm}}
   } % Poster title
 
-\author{\textbf{Primary Author}, Other Authors}
+\author{\textbf{Luke Seifert}, Madicken Munk}
 \institute{University of Illinios at Urbana-Champaign, Department of Nuclear, Plasma, and Radiological Engineering, Urbana, IL 61801}
 %----------------------------------------------------------------------------------------
 
@@ -125,26 +125,30 @@
 
 \begin{block}{Introduction}
 
-\textbf{Sub-title}
+\textbf{Molten Salt Reactor Online Reprocessing}
 
-Example un-ordered list: 
 \begin{itemize}
-	\item Example acronym call \gls{SNF} with an example citation 
-	    \cite{call_tag_article}
-	\item second bullet point with second use of an acronym \gls{SNF}
+	\item Depletion of Molten Salt Reactors requires accounting for reprocessing
+	\item Batchwise modeling of Molten Salt Reactors is common CITATIONS
+	\item Continuous modeling offers unique advantages over batchwise modeling
 \end{itemize}
 
 \vspace{0.7em}
-\textbf{Sub-title}
+\textbf{Comparison of Methods}
 
-More text relating to this section, and a third use of the same acronym
- \gls{SNF}. 
-
-These goals will be achieved by: 
 \begin{itemize}
-	\item Step to goal 
-	\item Step to goal 
+	\item An identical toy model is implemented for both methods (Figure \ref{fig:toy_geom})
+	\item Continuous model uses varying number of steps
+	\item Multiple approaches are implemented for the continuous model
+	\item Potential weaknesses of continuous model are investigated
 \end{itemize}
+
+
+\begin{figure}
+	\label{fig:toy_geom}
+	\includegraphics[width=0.9\linewidth]{images/CR0_geom1.png}
+	\caption{Geometry of toy model used in Serpent2 for continuous and batchwise reprocessing models.}
+\end{figure}
 
 \end{block}
 
@@ -157,8 +161,9 @@ These goals will be achieved by:
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{Objectives}
 \begin{itemize}
-        \item Objective 1
-	\item Objective 2
+        \item Capture the precise differences in continuous and batchwise models
+	\item Determine effective depletion step sizes for continuous reprocessing
+	\item Investigate potential weaknesses of continuous reprocessing
 \end{itemize}
 
 \end{alertblock}
@@ -167,29 +172,29 @@ These goals will be achieved by:
 %	Programs
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Program 1}
-Description
-
-\begin{figure}
-	\label{fig:figure_label_ex1}
-	\includegraphics[width=0.9\linewidth]{graphic_name1}
-	\caption{Caption1 Reference \cite{call_tag_article}}
-\end{figure}
-
-\end{block}
-
-\begin{block}{Program 2}
-
-Description
- 
-\begin{itemize}
-	\item{Item 1}
-	\item{Item 2}
-	\item{Item 3}
-\end{itemize}
-
-\end{block}
-
+%\begin{block}{Program 1}
+%Description
+%
+%\begin{figure}
+%	\label{fig:figure_label_ex1}
+%	\includegraphics[width=0.9\linewidth]{graphic_name1}
+%	\caption{Caption1 Reference \cite{call_tag_article}}
+%\end{figure}
+%
+%\end{block}
+%
+%\begin{block}{Program 2}
+%
+%Description
+% 
+%\begin{itemize}
+%	\item{Item 1}
+%	\item{Item 2}
+%	\item{Item 3}
+%\end{itemize}
+%
+%\end{block}
+%
 %----------------------------------------------------------------------------------------
 
 \end{column} % End of the first column
@@ -204,68 +209,44 @@ Description
 %	MODELS
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Models}
+\begin{block}{Reprocessing Models}
 \vspace{0.7em}
-\textbf{First Model}
+\textbf{Batchwise Reprocessing}
 
-Description
+Batchwise reprocessing entails running depletion multiple depletion steps with a custom script performing reprocessing
+For Serpent2, SaltProc is the code which is implemented for batchwise reprocessing.
 
-Example table 
-\begin{table}[]
-	\label{tab:table_label}
-	\caption{Table caption with citation \cite{call_tag_article}}
-	\begin{tabular}{|l|l|l|l|}
-	\hline
-	Header1 &  Header2 [Units]  &  Header3 [Units]  &  Header3 [Units]   \\ \hline
-	Item 1     & 100 & 2.5  & 2.5\\ \hline
-	Iten 2      & 100 & 2.5 & 2.5\\ \hline
-	Item 3     & 100 & 2.5  & 2.5\\ \hline
-	\end{tabular}
-\end{table}
-
-In the waste repository model, the user can define the variables: 
-	\begin{itemize}
-		\item Variable
-		\item Variable
-		\item Variable 
-		\item Variable 
-		\item Variable
-	\end{itemize}
+%\begin{align*}
+%	\gamma = X \frac{\tau}{T}
+%\hfill\label{eq:batch_eqn}
+%\end{equation}
+%\end{align*}
 
 \vspace{0.7em}
-\textbf{Second Model}
+\textbf{Continuous Reprocessing}
 
-Description 
+Continuous reprocessing adds a term to the Bateman equation
+The most common form of this implementation is a "decay-like" term CITATIONS
 
-\vspace{0.7em}
-\textbf{Third Model}
 
-Description with an example of a figure reference
+%\begin{align*}
+%%\begin{equation} \hfill
+%%\frac{dN}{dt} = \sum_j \lambda_j N_j + \gamma \Sigma_f \phi + \Sigma_k \phi - \lambda N - \Sigma \phi - C
+%\frac{dN_j}{dt}_{base} = \sum_{i \neq j}  \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \sigma_j \Phi \right ) N_j
+%\hfill\label{eq:Bateman_default}
+%%\end{equation}
+%\end{align*}
 
-Figure \ref{fig:figure_label_ex1} does stuff 
+%\begin{align*}	
+%%\begin{equation} \hfill
+%%\frac{dN}{dt} = \sum_j \lambda_j N_j + \gamma \Sigma_f \phi + \Sigma_k \phi - \lambda N - \Sigma \phi - C
+%%\frac{dN_j}{dt} = \sum_{i \neq j} \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \lambda _{reproc, i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \lambda_{reproc, j} + \sigma_j \Phi \right ) N_j
+%%\frac{dN_j}{dt} = \sum_{i \neq j} \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \lambda _{r, i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \lambda_{r, j} + \sigma_j \Phi \right ) N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
+%\frac{dN_j}{dt}_{net} = \frac{dN_j}{dt}_{base} -  \lambda_{r, j} N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
+%\hfill\label{eq:Bateman_type_one_decay} 
+%%\end{equation}
+%\end{align*}
 
-\begin{figure}
-	\label{fig:figure_label_ex2}
-	\includegraphics[width=1\linewidth]{graphic_name2}
-	\caption{Caption2 Reference \cite{call_tag_article}}
-\end{figure}
-
-Description 
-
-Equations
-\begin{align*}
-	y = x
-\end{align*}
-Description
-\begin{align*}
-	y = x
-\end{align*}
-Description
-\begin{align*}
-	y = x
-\end{align*}
-
-\end{block}
 
 
 %----------------------------------------------------------------------------------------
