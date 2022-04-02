@@ -129,7 +129,7 @@
 
 \begin{itemize}
 	\item Depletion of Molten Salt Reactors requires accounting for reprocessing
-	\item Batchwise modeling of Molten Salt Reactors is common CITATIONS
+	\item Batchwise modeling of Molten Salt Reactors is common \cite{rykhlevskii_modeling_2019, betzler_molten_2017}
 	\item Continuous modeling offers unique advantages over batchwise modeling
 \end{itemize}
 
@@ -137,7 +137,7 @@
 \textbf{Comparison of Methods}
 
 \begin{itemize}
-	\item An identical toy model is implemented for both methods (Figure \ref{fig:toy_geom})
+	\item An identical toy model is implemented for both methods
 	\item Continuous model uses varying number of steps
 	\item Multiple approaches are implemented for the continuous model
 	\item Potential weaknesses of continuous model are investigated
@@ -146,7 +146,7 @@
 
 \begin{figure}
 	\label{fig:toy_geom}
-	\includegraphics[width=0.9\linewidth]{images/CR0_geom1.png}
+	\includegraphics[width=0.6\linewidth]{images/CR0_geom1.png}
 	\caption{Geometry of toy model used in Serpent2 for continuous and batchwise reprocessing models.}
 \end{figure}
 
@@ -167,6 +167,24 @@
 \end{itemize}
 
 \end{alertblock}
+
+
+
+
+% This section creates an box with an orange border and a white background
+\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+\begin{alertblock}{Future Work }
+\begin{itemize}
+		\item Mass balancing of continuous reprocessing for full reactor
+		\item Comparison of models for full reactor
+		\item Depletion step size development over reactor lifetime
+\end{itemize}
+
+\end{alertblock}
+
+
+
 
 %----------------------------------------------------------------------------------------
 %	Programs
@@ -293,32 +311,36 @@
 \begin{column}{\onecolwid} % The third column
 
 \begin{block}{Results}
-\textbf{Something}
-
-Description/analysis
- 
-Contextualization
-Figure \ref{fig:figure_label_ex1} illustrates something.
-
-Description
+\textbf{Mass Balancing}
 
 \begin{figure}
-	\label{fig:figure_label_ex3}
-	\includegraphics[width=0.9\linewidth]{graphic_name3}
-	\caption{Caption3 Reference \cite{call_tag_article}}
+	\label{fig:mass_bal}
+	\includegraphics[width=0.9\linewidth]{images/simple_mass_bal.png}
+	\caption{Continuous reprocessing mass balance for single fissile feed and two isotope system with $\tau_{1/2}$ of 10 seconds.}
 \end{figure}
+
+\vspace{0.7em}
+\textbf{Comparison Results}
+
+\begin{figure}
+	\label{fig:keff_30d_batch}
+	\includegraphics[width=0.45\linewidth]{images/cumulative_keff_batch.png}
+	\includegraphics[width=0.45\linewidth]{images/cumulative_keff_coont.png}
+	\caption{Continuous and batch models $k_{eff}$ over time when using the matching depletion steps and feed rates and when continuous uses a single step and average feed rates.}
+\end{figure}
+
 
 \end{block}
 
-% This section creates an box with an orange border and a white background
-\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-\begin{alertblock}{Future Work }
-\begin{itemize}
-		\item Future work
-\end{itemize}
-
-\end{alertblock}
+%% This section creates an box with an orange border and a white background
+%\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+%\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+%\begin{alertblock}{Future Work }
+%\begin{itemize}
+%		\item Future work
+%\end{itemize}
+%
+%\end{alertblock}
 
 
 %----------------------------------------------------------------------------------------
@@ -328,8 +350,10 @@ Description
 \setbeamercolor{block title}{fg=norange,bg=white} % Change the block title color
 
 \begin{block}{Acknowledgements}
-	
-	Text specific to your funding, and other acknowledgements you'd like to make
+
+	This material is based upon work supported under an Integrated University Program Graduate Fellowship. The authors are grateful for this generous support.
+
+The authors thank Kathryn Huff for her contribution and support of this work in its early stages.
 	
 \end{block}
 
@@ -343,8 +367,8 @@ Description
 \begin{alertblock}{Contact Information}
 	\setbeamercolor{block title}{fg=norange,bg=white} % Change the block title color
 	\begin{itemize}
-		\item Email: \href{mailto:netid@illinois.edu}{netid@illinois.edu}
-		\item Phone: \href{tel:15555555555}{+1 555 555 5555}
+		\item Email: \href{mailto:seifert5@illinois.edu}{seifert5@illinois.edu}
+		\item Phone: \href{tel:18652790603}{+1 865 279 0603}
 	\end{itemize}
 % These specific elements are optional, but you should have some method for people to contact you.	
 	
