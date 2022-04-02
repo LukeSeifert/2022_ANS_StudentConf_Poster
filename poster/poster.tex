@@ -213,41 +213,76 @@
 \vspace{0.7em}
 \textbf{Batchwise Reprocessing}
 
-Batchwise reprocessing entails running depletion multiple depletion steps with a custom script performing reprocessing
-For Serpent2, SaltProc is the code which is implemented for batchwise reprocessing.
-
-%\begin{align*}
-%	\gamma = X \frac{\tau}{T}
-%\hfill\label{eq:batch_eqn}
-%\end{equation}
-%\end{align*}
+\begin{itemize}
+        \item Iteratively perform depletion with external adjustments
+	\item Small removals each depletion step is Steady Batch
+	\item Full removal after set number of steps is Bulk Batch
+	\item SaltProc used to run batchwise reprocessing for Serpent2
+\end{itemize}
 
 \vspace{0.7em}
 \textbf{Continuous Reprocessing}
 
-Continuous reprocessing adds a term to the Bateman equation
-The most common form of this implementation is a "decay-like" term CITATIONS
+\begin{itemize}
+        \item Adds "decay-like" term to Bateman equation, less iterative
+
+\begin{align*}
+\frac{dN_j}{dt}_{base} = \sum_{i \neq j}  \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \sigma_j \Phi \right ) N_j
+\end{align*}
+
+\begin{align*}	
+\frac{dN_j}{dt}_{net} = \frac{dN_j}{dt}_{base} -  \lambda_{r, j} N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
+\end{align*}
+	\item Cycle Time Decay model treats reprocessing as decay
+
+\begin{align*}
+	\lambda_r = \frac{ln(2)}{\tau_{1/2}}
+\end{align*}
+
+	\item Cycle Rate treats as linear fractional removal, same as Steady Batch
+
+\begin{align*}
+	\lambda_r = ln \left( \frac{1}{1-X} \right)
+\end{align*}
+	\item SaltProc Cycle Rate mimics batchwise reprocessing with continuous model
+\end{itemize}
 
 
-%\begin{align*}
-%%\begin{equation} \hfill
-%%\frac{dN}{dt} = \sum_j \lambda_j N_j + \gamma \Sigma_f \phi + \Sigma_k \phi - \lambda N - \Sigma \phi - C
-%\frac{dN_j}{dt}_{base} = \sum_{i \neq j}  \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \sigma_j \Phi \right ) N_j
-%\hfill\label{eq:Bateman_default}
-%%\end{equation}
-%\end{align*}
-
-%\begin{align*}	
-%%\begin{equation} \hfill
-%%\frac{dN}{dt} = \sum_j \lambda_j N_j + \gamma \Sigma_f \phi + \Sigma_k \phi - \lambda N - \Sigma \phi - C
-%%\frac{dN_j}{dt} = \sum_{i \neq j} \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \lambda _{reproc, i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \lambda_{reproc, j} + \sigma_j \Phi \right ) N_j
-%%\frac{dN_j}{dt} = \sum_{i \neq j} \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \lambda _{r, i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \lambda_{r, j} + \sigma_j \Phi \right ) N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
-%\frac{dN_j}{dt}_{net} = \frac{dN_j}{dt}_{base} -  \lambda_{r, j} N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
-%\hfill\label{eq:Bateman_type_one_decay} 
-%%\end{equation}
-%\end{align*}
 
 
+\vspace{0.7em}
+\textbf{Model Overview}
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.25}
+\caption{Different Reprocessing Approaches}
+\label{tab:keff_vals}
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | }
+ \hline
+ Approach & Cycle Time & $\tau_{1/2}$ & X [s$^{-1}$] & $\lambda_{r}$ [s]\\
+ \hline
+ \hline
+ Bulk Batch [3d] & 20 s & - & - & -\\
+ Steady Batch [3d] & 20 s & - & 3.86E-6 & -\\
+ Steady Batch [3d] & 3 d & - & 3.86E-6 & -\\
+ Steady Batch [3d] & 30 d & - & 3.86E-7 & -\\
+ \hline
+ Cycle Time Decay & 20 s & 10 s & - & 6.93E-2\\
+ Cycle Time Decay & 3 d & 1.5 d & - & 5.35E-6\\
+ Cycle Rate & 20 s & - & 0.05 & 5.13E-2\\
+ Cycle Rate & 3 d & - & 3.86E-6 & 3.86E-6\\
+ SaltProc Cycle Rate & 20 s & - & 3.86E-6 & 3.86E-6\\
+ SaltProc Cycle Rate & 3 d & - & 3.86E-6 & 3.86E-6\\
+ SaltProc Cycle Rate & 30 d & - & 3.86E-7 & 3.86E-7\\
+ 
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\end{block}
 
 %----------------------------------------------------------------------------------------
 
