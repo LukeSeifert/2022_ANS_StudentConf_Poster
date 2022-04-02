@@ -163,7 +163,8 @@
 \begin{itemize}
         \item Capture the precise differences in continuous and batchwise models
 	\item Determine effective depletion step sizes for continuous reprocessing
-	\item Investigate potential weaknesses of continuous reprocessing
+	\item Investigate validity of using average feed rates during depletion
+	%\item Investigate potential weaknesses of continuous reprocessing
 \end{itemize}
 
 \end{alertblock}
@@ -311,14 +312,14 @@
 \begin{column}{\onecolwid} % The third column
 
 \begin{block}{Results}
-\textbf{Mass Balancing}
-
-\begin{figure}
-	\label{fig:mass_bal}
-	\includegraphics[width=0.9\linewidth]{images/simple_mass_bal.png}
-	\caption{Continuous reprocessing mass balance for single fissile feed and two isotope system with $\tau_{1/2}$ of 10 seconds.}
-\end{figure}
-
+%\textbf{Mass Balancing}
+%
+%\begin{figure}
+%	\label{fig:mass_bal}
+%	\includegraphics[width=0.9\linewidth]{images/simple_mass_bal.png}
+%	\caption{Continuous reprocessing mass balance for single fissile feed and two isotope system with $\tau_{1/2}$ of 10 seconds.}
+%\end{figure}
+%
 \vspace{0.7em}
 \textbf{Comparison Results}
 
@@ -328,6 +329,41 @@
 	\includegraphics[width=0.45\linewidth]{images/cumulative_keff_coont.png}
 	\caption{Continuous and batch models $k_{eff}$ over time when using the matching depletion steps and feed rates and when continuous uses a single step and average feed rates.}
 \end{figure}
+
+
+%\begin{figure}
+%	\label{fig:keff_30d_batch}
+%	\includegraphics[width=0.6\linewidth]{images/cumulative_keff_batch.png}
+%	\caption{Continuous and batch models $k_{eff}$ over time when using the matching depletion steps and feed rates.}
+%\end{figure}
+%
+%
+%\begin{figure}
+%	\label{fig:keff_30d_batch}
+%	\includegraphics[width=0.6\linewidth]{images/cumulative_keff_coont.png}
+%	\caption{Continuous and batch models $k_{eff}$ over time when continuous uses a single step and average feed rates.}
+%\end{figure}
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.25}
+\caption{$k_{eff}$ at 30 Days for 3 and 30 Day Steps}
+\label{tab:keff_vals}
+%\begin{center}
+\begin{tabular}{ | c | c | c | c | }
+ \hline
+ Approach & 3d Step $k_{eff}$ & 30d Step $k_{eff}$ & Diff [pcm]\\
+ \hline
+ \hline
+ CR & 0.622815 & 0.622043 & 77\\
+ SPCR & 0.612871 & 0.611481 & 140\\
+ CTD & 0.62241 & 0.623246 & 84\\
+ CTRL & 0.594924 & 0.595784 & 86\\
+
+ \hline
+\end{tabular}
+%\end{center}
+\end{table}
+
 
 
 \end{block}
