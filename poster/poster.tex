@@ -156,6 +156,28 @@
 \end{figure}
 
 
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.25}
+\caption{Approach Acronyms and Descriptions}
+\label{tab:res_key}
+\begin{center}
+\begin{tabular}{ | c | c | }
+ \hline
+        Approach & Description\\
+ \hline
+ \hline
+ 	SP pre & SaltProc steady batch pre-depletion\\
+	SP post & SaltProc steady batch post-depletion\\
+	CR & Cycle Rate continuous approach\\
+	SPCR & SaltProc Cycle Rate continuous approach\\
+	CTD & Cycle Time Decay continuous approach\\
+	CTRL & Control method (no reprocessing feeds or removal)\\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
 \end{block}
 
 %----------------------------------------------------------------------------------------
@@ -241,9 +263,21 @@
 
 \begin{itemize}
         \item Iteratively perform depletion with external adjustments
-	\item Small removals each depletion step is Steady Batch
-	\item Full removal after set number of steps is Bulk Batch
-	\item SaltProc used to run batchwise reprocessing for Serpent2
+	\item \textbf{\emph{Steady Batch}} uses small removals each depletion step.
+
+\begin{align}
+	X = \frac{1}{T_{cyc}}
+\end{align}
+	\begin{itemize}
+		\item $T_{cyc}$ is the cycle time
+		\item $X$ is the fractional removal rate
+	\end{itemize}
+
+	%\item Small removals each depletion step is Steady Batch
+	\item \textbf{\emph{Bulk Batch}} uses full removal after a set number of depletion steps.
+	%\item Full removal after set number of steps is Bulk Batch
+	\item SaltProc is used to run batchwise reprocessing for Serpent2
+	\item The current version of SaltProc uses the Steady Batch method
 \end{itemize}
 
 
@@ -312,18 +346,25 @@ The symbols given in the equations are defined as follows:
 \end{itemize}
 
 
-	\item Cycle Time Decay model treats reprocessing as decay
+	\item \textbf{\emph{Cycle Time Decay}} (CTD) model treats reprocessing as decay
+
+
+\begin{align}
+	\tau_{1/2} = \frac{1}{2} T_{cyc}
+\end{align}
 
 \begin{align}
 	\lambda_r = \frac{ln(2)}{\tau_{1/2}}
 \end{align}
 
-	\item Cycle Rate treats as linear fractional removal, same as Steady Batch
+	\item \textbf{\emph{Cycle Rate}} (CR) treats as linear fractional removal, same as Steady Batch
 
 \begin{align}
 	\lambda_r = ln \left( \frac{1}{1-X} \right)
 \end{align}
-	\item SaltProc Cycle Rate mimics batchwise reprocessing with continuous model
+
+
+	\item \textbf{\emph{SaltProc Cycle Rate}} (SPCR) mimics batchwise reprocessing with continuous model
 \end{itemize}
 
 
@@ -404,7 +445,7 @@ The symbols given in the equations are defined as follows:
 %	\caption{Continuous reprocessing mass balance for single fissile feed and two isotope system with $\tau_{1/2}$ of 10 seconds.}
 %\end{figure}
 %
-\vspace{0.7em}
+%\vspace{0.7em}
 %\textbf{Comparison Results}
 
 %\begin{figure}
@@ -413,6 +454,16 @@ The symbols given in the equations are defined as follows:
 %	\includegraphics[width=0.45\linewidth]{images/cumulative_keff_coont.png}
 %	\caption{Continuous and batch models $k_{eff}$ over time when using the matching depletion steps and feed rates and when continuous uses a single step and average feed rates.}
 %\end{figure}
+
+%\begin{itemize}
+%	\item \textbf{\emph{SP pre}} is the SaltProc steady batch results pre-depletion (post-reprocessing)
+%	\item \textbf{\emph{SP post}} is the SaltProc steady batch results post-depletion (pre-reprocessing)
+%	\item \textbf{\emph{CR}} is the Cycle Rate continuous approach
+%	\item \textbf{\emph{SPCR}} is the SaltProc Cycle Rate continuous approach
+%	\item \textbf{\emph{CTD}} is the Cycle Time Decay continuous approach
+%	\item \textbf{\emph{CTRL}} is a control approach with no reprocessing feeds or removal
+%\end{itemize}
+
 
 
 \textbf{Multiple Steps}
