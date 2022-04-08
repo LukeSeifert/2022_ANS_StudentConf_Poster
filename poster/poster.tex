@@ -75,6 +75,7 @@
 
 \setbeamertemplate{bibliography item}[text]
 
+
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION 
 %----------------------------------------------------------------------------------------
@@ -277,6 +278,24 @@
 \begin{align*}	
 \frac{dN_j}{dt}_{net} = \frac{dN_j}{dt}_{base} -  \lambda_{r, j} N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
 \end{align*}
+
+
+The symbols given in the equations are defined as follows:
+\begin{itemize}
+\item $N_j$ is the atomic density of isotope j.
+\item $\gamma_{i \rightarrow j}$ is the fractional fission product yield of $j$ in the fission of isotope $i$.
+\item $\sigma_{f, i}$ is the microscopic fission cross section of isotope $i$.
+\item $\Phi$ is the spectrum-averaged scalar flux in the fuel region.
+\item $\lambda _{i \rightarrow j}$ is the decay constant of decay $i \rightarrow j$.
+\item $\sigma_{i \rightarrow j}$ is the microscopic transmution cross section of reaction $i \rightarrow j$.
+\item $N_i$ is the atomic density of isotope $i$.
+\item $\lambda_j$ is the decay constant of isotope $j$.
+\item $\lambda_{r, j}$ is the reprocessing constant for removal of isotope $j$.
+\item $\sigma_j$ is the microscopic total transmutation cross section of isotope $j$.
+\item $\lambda _{r, i \rightarrow j}$ is the reprocessing constant for feed of material $i \rightarrow j$.
+\end{itemize}
+
+
 	\item Cycle Time Decay model treats reprocessing as decay
 
 \begin{align*}
