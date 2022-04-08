@@ -271,13 +271,13 @@
 \begin{itemize}
 	\item Adds "decay-like" term to Bateman equation, less iterative \cite{aufiero_extended_2013}
 
-\begin{align*}
+\begin{align}
 \frac{dN_j}{dt}_{base} = \sum_{i \neq j}  \left [ \left( \gamma_{i \rightarrow j} \sigma_{f, i} \Phi + \lambda _{i \rightarrow j} + \sigma_{i \rightarrow j} \Phi \right) N_i \right ] - \left ( \lambda_j + \sigma_j \Phi \right ) N_j
-\end{align*}
+\end{align}
 
-\begin{align*}	
+\begin{align}	
 \frac{dN_j}{dt}_{net} = \frac{dN_j}{dt}_{base} -  \lambda_{r, j} N_j + \sum_{mat} \lambda _{r, i \rightarrow j} N_i
-\end{align*}
+\end{align}
 
 
 The symbols given in the equations are defined as follows:
@@ -298,15 +298,15 @@ The symbols given in the equations are defined as follows:
 
 	\item Cycle Time Decay model treats reprocessing as decay
 
-\begin{align*}
+\begin{align}
 	\lambda_r = \frac{ln(2)}{\tau_{1/2}}
-\end{align*}
+\end{align}
 
 	\item Cycle Rate treats as linear fractional removal, same as Steady Batch
 
-\begin{align*}
+\begin{align}
 	\lambda_r = ln \left( \frac{1}{1-X} \right)
-\end{align*}
+\end{align}
 	\item SaltProc Cycle Rate mimics batchwise reprocessing with continuous model
 \end{itemize}
 
