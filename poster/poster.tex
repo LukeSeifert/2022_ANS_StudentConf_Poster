@@ -240,6 +240,30 @@
 	\item SaltProc used to run batchwise reprocessing for Serpent2
 \end{itemize}
 
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.25}
+\caption{Batchwise Reprocessing Methods}
+\label{tab:batch_methods}
+\begin{center}
+\begin{tabular}{ | c | c | c | c | }
+ \hline
+	Approach & Cycle Time & X [s$^{-1}$] & Step Removal\\
+ \hline
+ \hline
+	Bulk Batch [3d] & 20 s & - & 1\\
+	Bulk Batch [3d] & 30 d & - & \, 0$^{*}$ \\
+	Steady Batch [3d] & 20 s & 3.86E-6 & 1\\
+	Steady Batch [3d] & 3 d & 3.86E-6 & 1\\
+	Steady Batch [3d] & 30 d & 3.86E-7 & 0.1\\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+	\begin{center}
+\footnotesize{$^{*}$ Bulk removal occurs after 30 days, so the step fractional removal becomes 1 at 30 day step.}\\
+	\end{center}
+
 \vspace{0.7em}
 \textbf{Continuous Reprocessing}
 
@@ -268,26 +292,15 @@
 \end{itemize}
 
 
-
-
-\vspace{0.7em}
-\textbf{Model Overview}
-
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.25}
-\caption{Different Reprocessing Approaches}
-\label{tab:keff_vals}
+\caption{Continuous Reprocessing Methods}
+\label{tab:cont_methods}
 \begin{center}
 \begin{tabular}{ | c | c | c | c | c | }
  \hline
 	Approach & Cycle Time & $\tau_{1/2}$ & X [s$^{-1}$] & $\lambda_{r}$ [s$^{-1}$]\\
  \hline
- \hline
- Bulk Batch [3d] & 20 s & - & - & -\\
- Bulk Batch [3d] & 30 d & - & - & -\\
- Steady Batch [3d] & 20 s & - & 3.86E-6 & -\\
- Steady Batch [3d] & 3 d & - & 3.86E-6 & -\\
- Steady Batch [3d] & 30 d & - & 3.86E-7 & -\\
  \hline
  Cycle Time Decay & 20 s & 10 s & - & 6.93E-2\\
  Cycle Time Decay & 3 d & 1.5 d & - & 5.35E-6\\
@@ -301,6 +314,40 @@
 \end{tabular}
 \end{center}
 \end{table}
+
+
+
+%\vspace{0.7em}
+%\textbf{Model Overview}
+%
+%\begin{table}[H]
+%\renewcommand{\arraystretch}{1.25}
+%\caption{Different Reprocessing Approaches}
+%\label{tab:keff_vals}
+%\begin{center}
+%\begin{tabular}{ | c | c | c | c | c | }
+% \hline
+%	Approach & Cycle Time & $\tau_{1/2}$ & X [s$^{-1}$] & $\lambda_{r}$ [s$^{-1}$]\\
+% \hline
+% \hline
+% Bulk Batch [3d] & 20 s & - & - & -\\
+% Bulk Batch [3d] & 30 d & - & - & -\\
+% Steady Batch [3d] & 20 s & - & 3.86E-6 & -\\
+% Steady Batch [3d] & 3 d & - & 3.86E-6 & -\\
+% Steady Batch [3d] & 30 d & - & 3.86E-7 & -\\
+% \hline
+% Cycle Time Decay & 20 s & 10 s & - & 6.93E-2\\
+% Cycle Time Decay & 3 d & 1.5 d & - & 5.35E-6\\
+% Cycle Rate & 20 s & - & 0.05 & 5.13E-2\\
+% Cycle Rate & 3 d & - & 3.86E-6 & 3.86E-6\\
+% SaltProc Cycle Rate & 20 s & - & 3.86E-6 & 3.86E-6\\
+% SaltProc Cycle Rate & 3 d & - & 3.86E-6 & 3.86E-6\\
+% SaltProc Cycle Rate & 30 d & - & 3.86E-7 & 3.86E-7\\
+% 
+% \hline
+%\end{tabular}
+%\end{center}
+%\end{table}
 
 
 \end{block}
