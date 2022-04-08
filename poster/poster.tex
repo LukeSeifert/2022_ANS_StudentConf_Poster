@@ -480,6 +480,9 @@ The symbols given in the equations are defined as follows:
 	\caption{Continuous and batch models $k_{eff}$ over time when continuous uses a single step and average feed rates.}
 \end{figure}
 
+
+\textbf{Overall Results}
+
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.25}
 \caption{$k_{eff}$ at 30 Days for 3 and 30 Day Steps}
@@ -501,21 +504,27 @@ The symbols given in the equations are defined as follows:
 \end{table}
 
 
+\begin{itemize}
+	\item Continuous with same depletion steps results in higher $k_{eff}$
+	\item Step size order of magnitude increase and average feed rate usage resulted in ~100 pcm difference in final $k_{eff}$
+	\item Step size increase reduces computational cost by a factor of 10
+	\item Average feed rate use eliminates double running, making depletion twice as efficient
+\end{itemize}
 
 \end{block}
 
 
 
-\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-\begin{alertblock}{Future Work }
-\begin{itemize}
-		\item Mass balancing of continuous reprocessing for full reactor
-		\item Comparison of models for full reactor
-		\item Depletion step size development over reactor lifetime
-\end{itemize}
-
-\end{alertblock}
+%\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+%\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+%\begin{alertblock}{Future Work }
+%\begin{itemize}
+%		\item Mass balancing of continuous reprocessing for full reactor
+%		\item Comparison of models for full reactor
+%		\item Depletion step size development over reactor lifetime
+%\end{itemize}
+%
+%\end{alertblock}
 
 %% This section creates an box with an orange border and a white background
 %\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
